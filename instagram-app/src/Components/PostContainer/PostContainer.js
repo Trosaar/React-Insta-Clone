@@ -1,16 +1,20 @@
-import React from 'react'
-import './PostContainer.css'
+import React from 'react';
+import CommentSection from '../CommentSection/CommentSection.js';
+import './PostContainer.css';
 
-class PostContainer extends React.component {
-  constuctor(props){
-    super(props)
-  };
-
-  render(){
-    return (
-
-    );
-  };
-};
+const PostContainer = props => {
+  console.log(props);
+  return (
+    <div className="postcontainer">
+      <a href="#">
+        <img src={props.eachPost.thumbnailUrl}/>
+        {props.eachPost.username}
+      </a><br/>
+      <img src={props.eachPost.imageUrl} />
+      <p>{`${props.eachPost.likes} Likes`}</p>
+      <CommentSection comments={props.eachPost.comments}/>
+    </div>
+  );
+}
 
 export default PostContainer;
