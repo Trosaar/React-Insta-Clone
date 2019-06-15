@@ -18,16 +18,29 @@ import './CommentSection.css';
 class CommentSection extends React.Component {
   constructor(props){
     super(props);
-    this.state=props.comments;
+    this.state = {
+      comments: props.comments};
+  }
+
+  createNewPost = post => {
+    const newPost = {
+      text: post,
+      username: "someone",
+      id: Date.now(),
+    };
+
+    this.setState({
+      comments: [...this.state.comments, newPost]
+    });
   }
 
   render(props){
     return(
       <div>
-        {props.comments.map(comment => { return(
+        {this.state.comments.map(comment => { return(
           <Comment com={comment} key={comment.id}/>
         )})}
-        <NewComment />
+        <NewComment create={this.createNewPost} />
       </div>
     );
   }

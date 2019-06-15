@@ -14,14 +14,16 @@ class NewComment extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    // this.props.createNewPost(this.state.text);
-    this.state.task = '';
+    this.props.create(this.state.text);
+    this.setState({
+      text:''
+    });
   };
 
   render() {
     return (
       <form onSubmit={this.submitHandler}>
-      <input type="text" placeholder="Comment..." name="comment" value={this.state.task} onChange={this.changeHandler} />
+      <input type="text" placeholder="Comment..." name="text" value={this.state.text} onChange={this.changeHandler} />
       <button type="submit">Add</button>
       </form>
     );

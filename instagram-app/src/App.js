@@ -6,34 +6,32 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state={dummyData};
+    this.state={
+      insta:[]
+    };
   }
 
-  // createNewPost = post => {
-  //   const newPost = {
-  //     text: post,
-  //     id: Date.now(),
-  //   };
-  //
-  //   this.setState({
-  //     dummyData: [...this.state.dummyData, newPost]
-  //   });
-  // }
+  componentDidMount(){
+    this.setState({
+      insta:dummyData
+    })
+  }
 
   render(){
     console.log('App info:',this.state);
     return(
       <div>
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search..." name="search" />
-        <button type="submit">Find it</button>
-      </form>
-        {this.state.dummyData.map( post => { return (
-          <PostContainer eachPost={post} key={post.id}/>
-        )})}
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search..." name="search" />
+          <button type="submit">Find it</button>
+        </form>
+          {this.state.insta.map( post => { return (
+            <PostContainer eachPost={post} key={post.id}/>
+          )})}
       </div>
     );
   }
 }
+
 
 export default App;
